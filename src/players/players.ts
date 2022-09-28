@@ -3,12 +3,12 @@
 import { MsgUpdateStatus } from "../shared/protocols/MsgUpdateStatus";
 
 export class Player {
-    static maxPlayerId: number = -1;
+    // static maxPlayerId: number = -1;
     // static players: { [playerId: number]: Player } = {}
     static players: Array<Player> = []
-    
 
-    playerId: number;
+
+    playerId: string;
 
     x: number = 0;
     y: number = -968.56;
@@ -18,12 +18,12 @@ export class Player {
     rotationY: number = 0;
     rotationZ: number = 0;
 
-    constructor() {
-        this.playerId = ++Player.maxPlayerId
+    constructor(wsId: string) {
+        this.playerId = wsId
         // Player.players[this.playerId] = this
         Player.players.push(this)
 
-        console.log(Player.players[this.playerId]);
+        console.log(Player.players.find(ele => ele.playerId === wsId ));
 
     }
 

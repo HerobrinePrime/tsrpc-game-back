@@ -4,7 +4,7 @@ import { ReqJoin, ResJoin } from "../shared/protocols/PtlJoin";
 
 export default async function (call: ApiCall<ReqJoin, ResJoin>) {
     // TODO
-    const player = new Player()
+    const player = new Player(call.conn.id)
 
     call.succ({
         code:200,

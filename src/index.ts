@@ -18,7 +18,13 @@ async function init() {
     // TODO
     // Prepare something... (e.g. connect the db)
     server.listenMsg('UpdateStatus', ({ msg }) => {
-        Player.players[msg.playerId].updateStates(msg)
+        Player.players.find(ele=>ele.playerId === msg.playerId)?.updateStates(msg)
+    })
+
+    server.flows.postDisconnectFlow.push(v =>{
+       Player.players.splice( Player.players.findIndex(ele => ele.playerId === v.conn.id),1)
+
+        return v
     })
 
     // setInterval
@@ -26,7 +32,7 @@ async function init() {
         server.broadcastMsg('Sync',{
             players:Player.players
         })
-    },50)
+    },10)
 };
 
 // Entry function

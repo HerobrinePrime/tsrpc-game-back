@@ -6,7 +6,7 @@ export interface ReqJoin extends BaseRequest {
 
 export interface ResJoin extends BaseResponse {
     code:number,
-    playerId:number
+    playerId:string
 }
 
 export const conf: BaseConf = {

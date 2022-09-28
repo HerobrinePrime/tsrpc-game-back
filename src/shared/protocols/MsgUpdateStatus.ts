@@ -1,5 +1,5 @@
 export interface MsgUpdateStatus {
-    playerId: number;
+    playerId: string;
     x: number
     y: number
     z: number
